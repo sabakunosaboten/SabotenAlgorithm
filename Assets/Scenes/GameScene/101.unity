@@ -798,10 +798,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CopyObject
   card: {fileID: 1322319364437917941, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-  distant: 5
+  distant: 2.5
+  positionX: -7
+  positionY: 0
   cardSprites:
   - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
   - {fileID: -6466320567465241655, guid: 56b950118a508984283797f471cca92b, type: 3}
+  - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
+  - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
+  - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
+  - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
   - {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
 --- !u!4 &1757391469
 Transform:
