@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CopyObject : MonoBehaviour
@@ -19,12 +20,7 @@ public class CopyObject : MonoBehaviour
             SpriteRenderer sr = instance.GetComponent<SpriteRenderer>();
             sr.sprite = cardSprites[i];
             ChangeImage changeImageScript = instance.GetComponent<ChangeImage>();
-            
-            if (changeImageScript != null)
-            {
-                // 今のループの番号(i)を、ChangeImageの変数に代入して覚えさせる！
-                changeImageScript.mySpriteIndex = i;
-            }
+            changeImageScript.mySpriteIndex = i;
         }
     }
 
