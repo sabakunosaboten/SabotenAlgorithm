@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &447612887
+--- !u!1001 &116106207
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -172,39 +172,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[0]'
-      value: 
-      objectReference: {fileID: -291774229228118027, guid: dceb56e681dcff4498c0ba34755890a1, type: 3}
-    - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[1]'
-      value: 
-      objectReference: {fileID: -2620662175666625333, guid: 685a1753e15e92345a7072f9a11063ef, type: 3}
-    - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[2]'
-      value: 
-      objectReference: {fileID: -5596983946411544917, guid: 2e993ff42cf65a6499b1126cd7477090, type: 3}
-    - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[3]'
-      value: 
-      objectReference: {fileID: -7608090918578583860, guid: 794217be335600a4e9c772964d38b6c6, type: 3}
-    - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[4]'
-      value: 
-      objectReference: {fileID: -5607277182739865638, guid: 65fc95d15ead2c2419a44fef429517b0, type: 3}
-    - target: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-      propertyPath: 'nextSprite.Array.data[6]'
-      value: 
-      objectReference: {fileID: 1134830312104938132, guid: b2b8261d8aa2f1043839e3d8e5144155, type: 3}
+      propertyPath: canClick
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
---- !u!1 &447612888 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1322319364437917941, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
-  m_PrefabInstance: {fileID: 447612887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: 100}
+  m_AnchoredPosition: {x: -80, y: 120}
   m_SizeDelta: {x: 308.9238, y: 48.9724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519451035
@@ -399,7 +374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3066\u3042\u3057\u304C4\u307B\u3093\u306E\u30AB\u30AF\u30BF\u30B9\u3061\u3083\u3093\u3092\u3055\u304C\u3057\u3066\u306D"
+  m_text: "\u3053\u3093\u3069\u306F\u3066\u3042\u3057\u306E\u304B\u305A\u3058\u3085\u3093\u306B\u306A\u3089\u3093\u3067\u3044\u308B\u3088\n\u3066\u3042\u3057\u304C4\u307B\u3093\u306E\u30AB\u30AF\u30BF\u30B9\u3061\u3083\u3093\u3092\u3055\u304C\u3057\u3066\u306D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3294876452ca27543a4d2472188ca7a5, type: 2}
   m_sharedMaterial: {fileID: 190062404973107084, guid: 3294876452ca27543a4d2472188ca7a5, type: 2}
@@ -1139,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a7d70e3c704f641b9ed1b96a2ba9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CopyObject
-  card: {fileID: 447612888}
+  card: {fileID: 1322319364437917941, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
   distant: 2.5
   positionX: -7
   positionY: 0
@@ -1168,10 +1143,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1757391467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29959ec2f5a7fdb47bb9b5b29a9e811a, type: 3}
+  m_Script: {fileID: 11500000, guid: f952a3bd5f334034cb7989e80ad2255e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Score
+  m_EditorClassIdentifier: Assembly-CSharp::Score102
   displayScript: {fileID: 847962095}
+  clickJudge: {fileID: 2115182045}
 --- !u!1 &1852335499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1253,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2115182045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3358710250011345888, guid: 7eb32ac1d42c9de4aacfb560fc486ef7, type: 3}
+  m_PrefabInstance: {fileID: 116106207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d401863f8f649254d9cd650b70fb7bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeImage
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1287,4 +1274,4 @@ SceneRoots:
   - {fileID: 1195333928}
   - {fileID: 1757391469}
   - {fileID: 847962094}
-  - {fileID: 447612887}
+  - {fileID: 116106207}

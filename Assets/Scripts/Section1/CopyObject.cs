@@ -9,16 +9,14 @@ public class CopyObject : MonoBehaviour
     [SerializeField] float distant = 5f;
     [SerializeField] float positionX = 0f;
     [SerializeField] float positionY = 0f;
-    [Tooltip("Sprites")]
-    public Sprite[] cardSprites;
+    [SerializeField] int spriteNumbers;
+
     void Start()
     {
-        for(int i=0;i< cardSprites.Length; i++)
+        for(int i=0;i< spriteNumbers; i++)
         {
             GameObject instance = Instantiate(card);
             instance.transform.position = new Vector2(positionX+i*distant,positionY);
-            SpriteRenderer sr = instance.GetComponent<SpriteRenderer>();
-            sr.sprite = cardSprites[i];
             ChangeImage changeImageScript = instance.GetComponent<ChangeImage>();
             changeImageScript.mySpriteIndex = i;
         }

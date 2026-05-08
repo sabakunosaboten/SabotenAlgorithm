@@ -9,7 +9,8 @@ public class Score : MonoBehaviour
     int[] score = new int[2];
     int expectedNumber = -1;
     public ResultDisplay displayScript;
-    public bool canClick{get; private set;}
+
+    bool canClick=true;
 
     public int finalScore {get; private set;}
 
@@ -36,7 +37,7 @@ public class Score : MonoBehaviour
                     // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
                     if (targetCard != null)
                     {
-                        
+                        targetCard.ImageChange(targetCard.mySpriteIndex);
                         if(expectedNumber != targetCard.mySpriteIndex)
                         {
                             score[0] = 90;
@@ -47,7 +48,7 @@ public class Score : MonoBehaviour
                         {
                             score[1] = 80;
                         }
-                        if(targetCard.mySpriteIndex == 3)
+                        if(targetCard.mySpriteIndex == 4)
                         {
                             FinalScore();
                             displayScript.DisplayCanvas(finalScore);
