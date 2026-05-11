@@ -699,8 +699,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1641051725}
-        m_TargetAssemblyTypeName: TitleToStageSlect, Assembly-CSharp
-        m_MethodName: TitleToStage_Button
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ToStage_Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -757,9 +757,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1641051720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1547365c06f944c95637a78bbaf57e, type: 3}
+  m_Script: {fileID: 11500000, guid: d03d6a40a690a9d4cb4cb1a14c3dc478, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TitleToStageSlect
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeScene
 --- !u!1 &2032599879
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,12 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class CopyButton : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] GameObject buttonPrefab;
     [SerializeField] Transform canvasTransform;
+    [SerializeField] ChangeScene stageSelectScript;
     [SerializeField] float distant = 5f;
     [Tooltip("Button")]
     public Button[] gameButton;
@@ -24,6 +26,15 @@ public class CopyButton : MonoBehaviour
 
             TMP_Text buttonText = buttonInstance.GetComponentInChildren<TMP_Text>();
             buttonText.text = "Button"+(i+1);
+
+            int buttonIndex = i;
+
+            Button btn = buttonInstance.GetComponent<Button>();
+
+            btn.onClick.AddListener(() =>
+            {
+                stageSelectScript.StageSelectToGame_Button(buttonIndex);
+            });
         }
     }
 

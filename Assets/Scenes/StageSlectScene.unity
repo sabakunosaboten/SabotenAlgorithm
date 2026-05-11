@@ -236,11 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CopyButton
   buttonPrefab: {fileID: 6476372473907456838, guid: ac179f40dc137cf49b7e8b46e102660e, type: 3}
   canvasTransform: {fileID: 416496075}
+  stageSelectScript: {fileID: 3980329028898293487, guid: ac179f40dc137cf49b7e8b46e102660e, type: 3}
   distant: 5
   gameButton:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &519420028
