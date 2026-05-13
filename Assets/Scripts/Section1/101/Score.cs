@@ -10,15 +10,14 @@ public class Score : MonoBehaviour
     int expectedNumber = -1;
     public ResultDisplay displayScript;
 
-    bool canClick=true;
+    public bool canClick=true;
 
-    public int finalScore {get; private set;}
+    public int finalScore {get; private set;}=-1;
 
     void Start()
     {
         score[0] = 100;
         expectedNumber = 0;
-        canClick = true;
     }
     void Update()
     {
@@ -68,5 +67,6 @@ public class Score : MonoBehaviour
         {
             finalScore = score[1];
         }
+        SaveManager.SaveScore(finalScore,0);
     }
 }
