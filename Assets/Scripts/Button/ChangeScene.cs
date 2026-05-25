@@ -1,9 +1,11 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class ChangeScene : MonoBehaviour
 {
     string[] sceneName = {"101","102"};
+
     public void StageSelectToGame_Button(int index)
     {
         SceneManager.LoadScene(sceneName[index]);

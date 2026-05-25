@@ -149,9 +149,8 @@ GameObject:
   - component: {fileID: 576878993355662142}
   - component: {fileID: 6578721913298411448}
   - component: {fileID: 9068937351845481070}
-  - component: {fileID: 3980329028898293487}
   m_Layer: 5
-  m_Name: ToGameSceneButton
+  m_Name: ProliferationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3980329028898293487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: StageSelectToGame_Button
         m_Mode: 3
@@ -271,15 +270,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3980329028898293487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6476372473907456838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03d6a40a690a9d4cb4cb1a14c3dc478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeScene

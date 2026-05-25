@@ -6,7 +6,8 @@ using System.IO; // ファイルの読み書きに必須！
 [System.Serializable]
 public class SaveData
 {
-    public  int[] finalScore={-1,-1} ; // 初期値は -1 にしておきます
+    public  int[] finalScore100={-1,-1} ;
+    public int[] finalScore200 = {-1,-1}; // 初期値は -1 にしておきます
 }
 
 // ② どこからでも呼び出せる便利クラス（staticクラス）
@@ -19,7 +20,7 @@ public static class SaveManager
     public static void SaveScore(int scoreToSave,int stageNumber)
     {
         SaveData data = new SaveData();
-        data.finalScore[stageNumber] = scoreToSave;
+        data.finalScore100[stageNumber] = scoreToSave;
 
         // 箱をJSON文字に変換して、ファイルに書き込む
         string json = JsonUtility.ToJson(data);
@@ -29,21 +30,16 @@ public static class SaveManager
     }
 
     // ＝＝＝ ロードする処理 ＝＝＝
-    public static int LoadScore(int stageNumber)
+    public static SaveData GetAllSaveData()
     {
-        // もしセーブファイルが存在したら
         if (File.Exists(filePath))
         {
-            // JSON文字を読み込んで、箱に戻す
             string json = File.ReadAllText(filePath);
-            SaveData data = JsonUtility.FromJson<SaveData>(json);
-            
-            Debug.Log("ロード成功！スコア: " + data.finalScore);
-            return data.finalScore[stageNumber];
+            // JSONからSaveDataクラスの形に復元して返す
+            return JsonUtility.FromJson<SaveData>(json);
         }
 
-        // ファイルがまだ無い（初回プレイ）場合は -1 を返す
-        Debug.Log("セーブデータがありません。初回プレイです。");
-        return -1; 
+        // セーブファイルが無い場合は、初期値（全部-1）の入った新しい箱を返す
+        return new SaveData(); 
     }
 }

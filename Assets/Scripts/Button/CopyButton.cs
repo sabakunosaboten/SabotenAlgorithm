@@ -3,39 +3,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
+using UnityEngine.Events;
 
 public class CopyButton : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] GameObject buttonPrefab;
     [SerializeField] Transform canvasTransform;
-    [SerializeField] ChangeScene stageSelectScript;
-    [SerializeField] float distant = 5f;
+    [SerializeField] float distantV = 5f;
+    [SerializeField] float distantH = 5f;
+    [SerializeField] float x = 0;
+    [SerializeField] float y = 0;
     [Tooltip("Button")]
-    public Button[] gameButton;
-    void Start()
+    public Button[] clickButton;
+    public UnityEvent<int> ButtonIndex;
+    public void CopyButtonF()
     {
-        for(int i=0;i< gameButton.Length; i++)
+        for(int i=0;i< clickButton.Length; i++)
         {
             GameObject buttonInstance = Instantiate(buttonPrefab,canvasTransform);
 
-            RectTransform rect = GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(0,i*30);
-
-            buttonInstance.transform.position = new Vector2(i*distant-5,0);
+            RectTransform rect = buttonInstance.GetComponent<RectTransform>();
+            rect.anchoredPosition = new Vector2(x+i*distantH,y-i*distantV);
 
             TMP_Text buttonText = buttonInstance.GetComponentInChildren<TMP_Text>();
             buttonText.text = "Button"+(i+1);
 
-            int buttonIndex = i;
+            buttonInstance.SetActive(true);
 
+            int localINdex =i;
             Button btn = buttonInstance.GetComponent<Button>();
-
             btn.onClick.AddListener(() =>
             {
-                stageSelectScript.StageSelectToGame_Button(buttonIndex);
+                ButtonIndex.Invoke(localINdex);
             });
         }
+    }
+
+    void Start()
+    {
+        CopyButtonF();
     }
 
     // Update is called once per frame
