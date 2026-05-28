@@ -113,9 +113,8 @@ MonoBehaviour:
   - {fileID: -7608090918578583860, guid: 794217be335600a4e9c772964d38b6c6, type: 3}
   - {fileID: -2620662175666625333, guid: 685a1753e15e92345a7072f9a11063ef, type: 3}
   - {fileID: -1745459700554273605, guid: 1d2cfadbdbf073249a607cf778af63da, type: 3}
-  DefoltSprite: {fileID: 1119820643630102181, guid: d7db7334807e42542b06586284590543, type: 3}
+  DefoltSprite: {fileID: 8297570836596973011, guid: b68f0e7246254484d82c53d1ca9d88de, type: 3}
   duration: 2
-  canClick: 0
   mySpriteIndex: -1
 --- !u!61 &9077589503012160631
 BoxCollider2D:

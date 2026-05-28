@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CopyObject
   card: {fileID: 447612888}
   distant: 2.5
-  positionX: -7
+  positionX: -7.5
   positionY: 0
   spriteNumbers: 7
 --- !u!4 &1757391469
