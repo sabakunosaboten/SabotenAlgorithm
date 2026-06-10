@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ChangeScene : MonoBehaviour
 {
-    string[] sceneName = {"101","102"};
+    [SerializeField]string[] sceneName ;
 
     public void StageSelectToGame_Button(int index)
     {

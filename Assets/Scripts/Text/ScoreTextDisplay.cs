@@ -30,8 +30,8 @@ public class ScoreTextDisplay : MonoBehaviour
 
             textInstance.SetActive(true);
 
-            int localINdex =i;
-            textIndex.Invoke(localINdex);
+            int localIndex =i;
+            textIndex.Invoke(localIndex);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

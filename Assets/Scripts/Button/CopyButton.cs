@@ -33,11 +33,11 @@ public class CopyButton : MonoBehaviour
 
             buttonInstance.SetActive(true);
 
-            int localINdex =i;
+            int localIndex =i;
             Button btn = buttonInstance.GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
-                ButtonIndex.Invoke(localINdex);
+                ButtonIndex.Invoke(localIndex);
             });
         }
     }
