@@ -7,6 +7,7 @@ public class CardClickJudge : MonoBehaviour
     [SerializeField]CopyObject CopyObjectScript;
     bool canClick;
     GrowCard previousTarget;
+    GrowCard target;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +22,10 @@ public class CardClickJudge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CardClick();
+    }
+    public void CardClick()
+    {
         if(canClick == true)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -32,22 +37,8 @@ public class CardClickJudge : MonoBehaviour
                 if (hit.collider != null)
                 {
                     ChangeImage targetCard = hit.collider.GetComponent<ChangeImage>();
-                    GrowCard target = hit.collider.GetComponent<GrowCard>();
-                    SpriteRenderer nowSprite = target.GetComponent<SpriteRenderer>();
-                    if(previousTarget != null)
-                    {
-                        previousTarget.Grow();
-                        SpriteRenderer previousSprite = previousTarget.GetComponent<SpriteRenderer>();
-                        Sprite kariSprite = previousSprite.sprite;
-                        previousSprite.sprite = nowSprite.sprite;
-                        nowSprite.sprite = kariSprite;
-                        previousSprite = null;
-                    }
-                    else
-                    {
-                        target.Grow();
-                        previousTarget = target;
-                    }
+                    target = hit.collider.GetComponent<GrowCard>();
+                    CardGrow(target);
 
                     // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
                     if (targetCard != null)
@@ -59,4 +50,30 @@ public class CardClickJudge : MonoBehaviour
             }
         }
     }
+
+    void CardGrow(GrowCard target)
+    {
+        SpriteRenderer nowSprite = target.GetComponent<SpriteRenderer>();
+        if(previousTarget != null)
+                    {
+                        previousTarget.Grow();
+                        SpriteRenderer previousSprite = previousTarget.GetComponent<SpriteRenderer>();
+                        Sprite kariSprite = previousSprite.sprite;
+                        previousSprite.sprite = nowSprite.sprite;
+                        nowSprite.sprite = kariSprite;
+                        previousTarget = null;
+                    }
+                    else
+                    {
+                        target.Grow();
+                        previousTarget = target;
+                    }
+    }
+    public void GrowRset()
+    {
+        target.Grow();
+        previousTarget = null;
+    }
 }
+
+
