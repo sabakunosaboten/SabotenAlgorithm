@@ -39,6 +39,7 @@ public class CardClickJudge : MonoBehaviour
                     ChangeImage targetCard = hit.collider.GetComponent<ChangeImage>();
                     target = hit.collider.GetComponent<GrowCard>();
                     CardGrow(target);
+                    Debug.Log(hit.collider.GetComponent<ObjectInformation>().GetIndex());
 
                     // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
                     if (targetCard != null)

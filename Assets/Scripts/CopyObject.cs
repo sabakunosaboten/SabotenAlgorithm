@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -23,8 +24,12 @@ public class CopyObject : MonoBehaviour
             instance.transform.position = new Vector2(positionX+i*distant,positionY);
             mySpriteIndex = i;
             cardInstance[i] = instance;
+            int localindex=i;
+            instance.GetComponent<ObjectInformation>().Setup(localindex);
         }
     }
+
+
 
     // Update is called once per frame
     void Update()

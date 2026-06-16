@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonInformation : MonoBehaviour
+public class ObjectInformation : MonoBehaviour
 {
-    public int buttonIndex { get; private set; }
-    public Button Btn { get; private set; }
+    int myIndex;
 
     public void Setup(int index)
     {
-        buttonIndex = index;
-        Btn = GetComponent<Button>();
+        myIndex = index;
     }
+    public int GetIndex() => myIndex;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
