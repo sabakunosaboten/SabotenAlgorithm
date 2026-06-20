@@ -1187,6 +1187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b59191a64b49d4cb20ed60eed9e6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Score200
+  ClickJudgeScript: {fileID: 1757391471}
+  cardlist: 05000000000000000a00000004000000020000000f00000006000000
+  rightlist: 00000000020000000400000005000000060000000a0000000f000000
 --- !u!114 &1757391471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1211,7 @@ MonoBehaviour:
   - {fileID: -1745459700554273605, guid: 1d2cfadbdbf073249a607cf778af63da, type: 3}
   - {fileID: -7608090918578583860, guid: 794217be335600a4e9c772964d38b6c6, type: 3}
   CopyObjectScript: {fileID: 1757391468}
+  ScoreScript: {fileID: 1757391470}
 --- !u!114 &1757391472
 MonoBehaviour:
   m_ObjectHideFlags: 0

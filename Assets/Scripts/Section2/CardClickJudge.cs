@@ -1,13 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class CardClickJudge : MonoBehaviour
 {
     [SerializeField] Sprite[] cardSprites;
     [SerializeField]CopyObject CopyObjectScript;
+    [SerializeField]Score200 ScoreScript;
     bool canClick;
+    public int cardIndex{get;private set;} = -1;
+
+    public void IndexReset()
+    {
+        cardIndex = -1;
+    }
     GrowCard previousTarget;
     GrowCard target;
+    public bool isClicking{get ;private set;} = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,13 +31,27 @@ public class CardClickJudge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CardClick();
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            isClicking = true;
+            CardClick();
+        }
+        else
+        {
+            isClicking = false;
+        }
+    }
+    IEnumerator WaitClick()
+    {
+    // 左クリックされるまでここで一時停止
+        yield return new WaitUntil(() => isClicking);
     }
     public void CardClick()
     {
+
         if(canClick == true)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (isClicking)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
@@ -39,14 +62,7 @@ public class CardClickJudge : MonoBehaviour
                     ChangeImage targetCard = hit.collider.GetComponent<ChangeImage>();
                     target = hit.collider.GetComponent<GrowCard>();
                     CardGrow(target);
-                    Debug.Log(hit.collider.GetComponent<ObjectInformation>().GetIndex());
-
-                    // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
-                    if (targetCard != null)
-                    {
-                    
-
-                    }
+                    cardIndex = hit.collider.GetComponent<ObjectInformation>().GetIndex();
                 }
             }
         }
