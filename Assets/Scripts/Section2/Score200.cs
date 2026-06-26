@@ -10,6 +10,8 @@ public class Score200 : MonoBehaviour
     [SerializeField] CardClickJudge ClickJudgeScript;
     int firstIndex = -1;
     int secondIndex = -1;
+
+    bool a;
     [SerializeField] int[] cardlist;
     [SerializeField] int[] rightlist;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
