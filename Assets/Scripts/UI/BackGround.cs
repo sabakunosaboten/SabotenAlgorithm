@@ -25,13 +25,10 @@ public class BackGround : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("あ");
         if (myCanvas != null)
         {
-            Debug.Log("ああ");
             // 新しいシーンのメインカメラを探して割り当て直す
             myCanvas.worldCamera = Camera.main;
-            Debug.Log("あああ");
         }
     }
 

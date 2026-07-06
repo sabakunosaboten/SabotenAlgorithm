@@ -1,9 +1,13 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using NUnit.Framework.Constraints;
+using UnityEngine.Rendering;
 
 public class Score200 : MonoBehaviour
 {
@@ -11,49 +15,87 @@ public class Score200 : MonoBehaviour
     int firstIndex = -1;
     int secondIndex = -1;
 
-    bool a;
-    [SerializeField] int[] cardlist;
+    bool BSfinish = false;
+    int BSIndex = 0;
+    [SerializeField] List<int> cardlist;
+    List<int> examineListSS;
+    List<int> examineListBS;
     [SerializeField] int[] rightlist;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(BubbleSort());
+        StartCoroutine(ClickGetIndex());
     }
-    IEnumerator BubbleSort()
+
+    IEnumerator ClickGetIndex()
     {
-        int[] examineList = cardlist;
-        for(int i = 0; i < examineList.Length-1; i++)
+        examineListBS = new List<int>(cardlist);
+        examineListSS = new List<int>(cardlist);
+        int i=0;
+        while (true)
         {
-            for(int j = 0; j < examineList.Length - 1; j++)
+            yield return new WaitUntil(() => ClickJudgeScript.cardIndex != -1);
+            int fIndex = ClickJudgeScript.cardIndex;
+            ClickJudgeScript.IndexReset();
+            yield return new WaitUntil(() => ClickJudgeScript.cardIndex != -1);
+            int sIndex = ClickJudgeScript.cardIndex;
+            ClickJudgeScript.IndexReset();
+            firstIndex = Math.Min(fIndex,sIndex);
+            secondIndex = Math.Max(fIndex,sIndex);
+            if (BSfinish == false)
             {
-                
-                if (examineList[j] > examineList[j + 1])
-                {
-                    yield return StartCoroutine(WaitCardClick());
-                    firstIndex = ClickJudgeScript.cardIndex;
-                    ClickJudgeScript.IndexReset();
-                    yield return StartCoroutine(WaitCardClick());
-                    secondIndex = ClickJudgeScript.cardIndex;
-                    ClickJudgeScript.IndexReset();
-                    if((firstIndex == j||firstIndex == j+1)&&(secondIndex == j||secondIndex == j+1))
-                    {
-                        (examineList[j],examineList[j+1]) = (examineList[j+1],examineList[j]);
-                    }
-                }
-                else
-                {
-                    continue;
-                }
-            }   
-        }
-        bool isClear = ClearCheck(examineList);
-        if (isClear)
-        {
-            Debug.Log("Clear");
+                BubbleSort();
+            }
+            SelectionSort(i);
+            i++;
+            if (i == 7)
+            {
+                i=0;
+            }
         }
     }
 
-    bool ClearCheck(int[] list)
+    void BubbleSort()
+    {
+        for(int i=BSIndex;i<firstIndex; i++)
+        {
+            if (examineListBS[i] > examineListBS[i + 1])
+            {
+                BSfinish = true;
+            }
+        }
+        if (examineListBS[firstIndex] > examineListBS[secondIndex])
+        {
+            if (firstIndex == secondIndex - 1)
+            {
+                (examineListBS[firstIndex],examineListBS[secondIndex]) = (examineListBS[secondIndex],examineListBS[firstIndex]);
+                BSIndex = firstIndex;
+            }
+        }
+        
+
+        bool isClear = ClearCheck(examineListBS);
+        if (isClear)
+        {
+            BSfinish = true;
+            Debug.Log("BubleSort");
+        }
+    }
+    void SelectionSort(int i)
+    {
+        int minIndex = examineListSS.Skip(i).Select((v, idx) => new { v, Index = idx + i }).OrderBy(x => x.v).First().Index;
+        //Debug.Log(minIndex);
+        if(firstIndex == i && secondIndex == minIndex)
+        {
+            (examineListSS[i],examineListSS[minIndex]) = (examineListSS[minIndex],examineListSS[i]);
+        }
+        bool isClear = ClearCheck(examineListSS);
+        if (isClear)
+        {
+            Debug.Log("SelectionSort");
+        }
+    }
+    bool ClearCheck(List<int> list)
     {
         for(int i = 0; i < rightlist.Length; i++)
         {
@@ -68,10 +110,5 @@ public class Score200 : MonoBehaviour
     void Update()
     {
         
-    }
-
-    IEnumerator WaitCardClick()
-    {
-        yield return new WaitUntil(() => ClickJudgeScript.cardIndex != -1);
     }
 }
