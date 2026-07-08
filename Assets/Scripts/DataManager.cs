@@ -6,8 +6,7 @@ using System.IO; // ファイルの読み書きに必須！
 [System.Serializable]
 public class SaveData
 {
-    public  int[] finalScore100={-1,-1} ;
-    public int[] finalScore200 = {-1,-1}; // 初期値は -1 にしておきます
+    public  string[,] saveScore=new string [2,2]{{"-1","-1"},{"ellor","ellor"}} ; // 初期値は -1 にしておきます
 }
 
 // ② どこからでも呼び出せる便利クラス（staticクラス）
@@ -17,10 +16,10 @@ public static class SaveManager
     public static string filePath = Application.persistentDataPath + "/savedata.json";
 
     // ＝＝＝ セーブする処理 ＝＝＝
-    public static void SaveScore(int scoreToSave,int stageNumber)
+    public static void SaveScore(string scoreToSave,int row,int column)
     {
         SaveData data = new SaveData();
-        data.finalScore100[stageNumber] = scoreToSave;
+        data.saveScore[row,column] = scoreToSave;
 
         // 箱をJSON文字に変換して、ファイルに書き込む
         string json = JsonUtility.ToJson(data);

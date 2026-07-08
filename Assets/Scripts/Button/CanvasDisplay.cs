@@ -23,7 +23,7 @@ public class CanvasDisplay : MonoBehaviour
         
         chapterCanvas.enabled = false;
         GameStageCanvas[index].enabled = true;
-        ScoreDisplayScript[index].ScorePreview(index);
+        //ScoreDisplayScript[index].ScorePreview(index);
 
     }
 

@@ -700,6 +700,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &722836647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6075698733503004034, guid: 210058ae72fa0df4ab89da99cfbe22c1, type: 3}
+  m_PrefabInstance: {fileID: 1615796280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6623ac81ba1594ab86ec0d1e87aac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResultDisplay
 --- !u!1 &1195333925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1201,7 @@ MonoBehaviour:
   ClickJudgeScript: {fileID: 1757391471}
   cardlist: 05000000000000000a00000004000000020000000f00000006000000
   rightlist: 00000000020000000400000005000000060000000a0000000f000000
+  RDcs: {fileID: 722836647}
 --- !u!114 &1757391471
 MonoBehaviour:
   m_ObjectHideFlags: 0

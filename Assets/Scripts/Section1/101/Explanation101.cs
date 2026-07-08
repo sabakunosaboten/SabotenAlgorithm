@@ -8,7 +8,8 @@ public class Explanation101 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        int previousScore = SaveManager.GetAllSaveData().finalScore100[0];
+        int previousScore;
+        int.TryParse(SaveManager.GetAllSaveData().saveScore[0,1],out previousScore);
         if(0 <= previousScore && previousScore < 100)
         {
             Debug.Log(SaveManager.filePath);

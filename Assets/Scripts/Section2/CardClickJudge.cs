@@ -17,7 +17,7 @@ public class CardClickJudge : MonoBehaviour
     GrowCard previousTarget;
     GrowCard target;
     public bool isClicking{get ;private set;} = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         canClick = true;

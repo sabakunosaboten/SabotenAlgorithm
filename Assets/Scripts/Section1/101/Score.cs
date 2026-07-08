@@ -13,6 +13,7 @@ public class Score : MonoBehaviour
     public bool canClick=true;
 
     public int finalScore {get; private set;}=-1;
+    string scoreText;
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class Score : MonoBehaviour
                         if(targetCard.mySpriteIndex == 4)
                         {
                             FinalScore();
-                            displayScript.DisplayCanvas(finalScore);
+                            displayScript.DisplayCanvas(scoreText);
                             canClick = false; // ここでクリックを止めるのも大正解です！
                         }
                         expectedNumber += 1;
@@ -63,10 +64,11 @@ public class Score : MonoBehaviour
     public void FinalScore()
     {
         finalScore = score[0];
+        scoreText = finalScore.ToString();
         if (score[1] != 0)
         {
             finalScore = score[1];
         }
-        SaveManager.SaveScore(finalScore,0);
+        SaveManager.SaveScore(scoreText,0,1);
     }
 }

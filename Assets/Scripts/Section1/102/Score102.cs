@@ -16,6 +16,7 @@ public class Score102 : MonoBehaviour
     public ResultDisplay displayScript;
 
     public int finalScore {get; private set;}
+    string scoreText;
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class Score102 : MonoBehaviour
                             {
                                 score[1]=100;
                                 FinalScore();
-                                displayScript.DisplayCanvas(finalScore);
+                                displayScript.DisplayCanvas(scoreText);
                                 canClick = false;
                             }
                         }
@@ -69,7 +70,7 @@ public class Score102 : MonoBehaviour
                         else if(lastClickedIndex == -1 && targetCard.mySpriteIndex == 2)
                         {
                             score[0]=95;
-                            displayScript.DisplayCanvas(score[0]);
+                            displayScript.DisplayCanvas(score[0].ToString());
                             canClick = false;
                         }
                         else
@@ -84,7 +85,7 @@ public class Score102 : MonoBehaviour
                                 else if (targetCard.mySpriteIndex == 2)
                                 {
                                     score[0]=90;
-                                    displayScript.DisplayCanvas(score[0]);
+                                    displayScript.DisplayCanvas(score[0].ToString());
                                     canClick = false;
                                 }
                                 else
@@ -102,7 +103,7 @@ public class Score102 : MonoBehaviour
                                 else if (targetCard.mySpriteIndex == 2)
                                 {
                                     score[0]=90;
-                                    displayScript.DisplayCanvas(score[0]);
+                                    displayScript.DisplayCanvas(score[0].ToString());
                                     canClick = false;
                                 }
                                 else
@@ -117,7 +118,7 @@ public class Score102 : MonoBehaviour
                             if (targetCard.mySpriteIndex == 2)
                             {
                                 FinalScore();
-                                displayScript.DisplayCanvas(finalScore);
+                                displayScript.DisplayCanvas(scoreText);
                                 canClick = false;
                             }
                         }
@@ -130,9 +131,11 @@ public class Score102 : MonoBehaviour
     public void FinalScore()
     {
         finalScore = score[0];
+        scoreText = finalScore.ToString();
         if (score[1] != 0)
         {
             finalScore = score[1];
         }
+        SaveManager.SaveScore(scoreText,0,1);
     }
 }

@@ -8,7 +8,7 @@ public class ScoreTextDisplay : MonoBehaviour
 { 
     SaveData loadData; 
     
-    int[] Score;
+    string[,] Scores;
     [SerializeField] GameObject textPrefab;
     [SerializeField] Transform canvasTransform;
     [SerializeField] float distantV = 5f;
@@ -18,7 +18,7 @@ public class ScoreTextDisplay : MonoBehaviour
     [Tooltip("Text")]
     public TextMeshProUGUI[] copyedText;
     public UnityEvent<int> textIndex;
-    public void CopyTextF(int i)
+    public void CopyTextF(int i,int j)
     {
             GameObject textInstance = Instantiate(textPrefab,canvasTransform);
 
@@ -26,7 +26,7 @@ public class ScoreTextDisplay : MonoBehaviour
             rect.anchoredPosition = new Vector2(x+i*distantH,y-i*distantV);
 
             TMP_Text scoreText = textInstance.GetComponentInChildren<TMP_Text>();
-            scoreText.text = scoreText.text = "スコア"+Score[i];
+            scoreText.text = scoreText.text = "スコア"+Scores[i,j];
 
             textInstance.SetActive(true);
 
@@ -45,15 +45,17 @@ public class ScoreTextDisplay : MonoBehaviour
         
     }
 
-    public void ScorePreview(int chapterIndex)
+    public void ScorePreview(int row,int column)
     {
         loadData = SaveManager.GetAllSaveData();
-        int[][] chapterScores={loadData.finalScore100,loadData.finalScore200};
+        Scores=loadData.saveScore;
         UnityEngine.Debug.Log("text");
-        Score=chapterScores[chapterIndex];
-        for(int i = 0; i < copyedText.Length; i++)
+        for(int i = 0; i < Scores.GetLength(0); i++)
         {
-            CopyTextF(i);
+            for (int j = 0; i < Scores.GetLength(1); j++)
+            {
+                CopyTextF(i,j);
+            }
         }
     }
 }
