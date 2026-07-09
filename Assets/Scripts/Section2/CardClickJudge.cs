@@ -8,6 +8,7 @@ public class CardClickJudge : MonoBehaviour
     [SerializeField]CopyObject CopyObjectScript;
     [SerializeField]Score200 ScoreScript;
     bool canClick;
+    public bool reset = false;
     public int cardIndex{get;private set;} = -1;
 
     public void IndexReset()
@@ -48,7 +49,6 @@ public class CardClickJudge : MonoBehaviour
     }
     public void CardClick()
     {
-
         if(canClick == true)
         {
             if (isClicking)
@@ -90,6 +90,7 @@ public class CardClickJudge : MonoBehaviour
     {
         target.Grow();
         previousTarget = null;
+        reset=true;
     }
 }
 

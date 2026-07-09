@@ -45,6 +45,13 @@ public class Score200 : MonoBehaviour
             int fIndex = ClickJudgeScript.cardIndex;
             ClickJudgeScript.IndexReset();
             yield return new WaitUntil(() => ClickJudgeScript.cardIndex != -1);
+            if (ClickJudgeScript.reset == true)
+            {
+                fIndex = ClickJudgeScript.cardIndex;
+                ClickJudgeScript.IndexReset();
+                ClickJudgeScript.reset = false;
+                yield return new WaitUntil(() => ClickJudgeScript.cardIndex != -1);
+            }
             int sIndex = ClickJudgeScript.cardIndex;
             ClickJudgeScript.IndexReset();
             firstIndex = Math.Min(fIndex,sIndex);
