@@ -11,8 +11,6 @@ public class ChangeImage : MonoBehaviour
     [SerializeField] Sprite DefoltSprite;
     [SerializeField] int duration;
 
-    public int mySpriteIndex = -1;
-
     public void ImageChange(int number, Action onComplete = null)
     {
         StartCoroutine(Wait(number,onComplete));

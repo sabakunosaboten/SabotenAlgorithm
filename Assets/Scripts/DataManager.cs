@@ -2,11 +2,16 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO; // ファイルの読み書きに必須！
 
-// ① JSONに変換するための「データの箱（設計図）」
+// ① JSONに変換するための「データの箱（設計図）
 [System.Serializable]
-public class SaveData
-{
-    public  string[,] saveScore=new string [2,2]{{"-1","-1"},{"ellor","ellor"}} ; // 初期値は -1 にしておきます
+public class Row { public string[] col; }
+
+[System.Serializable]
+public class SaveData {
+    public Row[] row = new Row[] {
+        new Row { col = new string[] { "-1", "-1" } },
+        new Row { col = new string[] { "ellor", "ellor" } }
+    };
 }
 
 // ② どこからでも呼び出せる便利クラス（staticクラス）
@@ -16,10 +21,10 @@ public static class SaveManager
     public static string filePath = Application.persistentDataPath + "/savedata.json";
 
     // ＝＝＝ セーブする処理 ＝＝＝
-    public static void SaveScore(string scoreToSave,int row,int column)
+    public static void SaveScore(string scoreToSave,int i,int j)
     {
-        SaveData data = new SaveData();
-        data.saveScore[row,column] = scoreToSave;
+        SaveData data = GetAllSaveData();
+        data.row[i].col[j] = scoreToSave;
 
         // 箱をJSON文字に変換して、ファイルに書き込む
         string json = JsonUtility.ToJson(data);

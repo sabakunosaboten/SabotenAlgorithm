@@ -158,6 +158,7 @@ MonoBehaviour:
   distantH: 200
   x: -130
   y: -70
+  chapter: 0
   copyedText: []
   textIndex:
     m_PersistentCalls:
@@ -408,7 +409,8 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 100
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7937848908218086441, guid: 02e985442a6045e41857f331753f6bd9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

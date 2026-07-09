@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7729333289739360473}
   - component: {fileID: 3358710250011345888}
   - component: {fileID: 9077589503012160631}
+  - component: {fileID: 3701803468225039316}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -162,3 +163,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3701803468225039316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322319364437917941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf32118e0c7621842ada2ff80bb4a446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectInformation

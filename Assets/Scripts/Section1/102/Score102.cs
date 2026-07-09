@@ -39,12 +39,13 @@ public class Score102 : MonoBehaviour
                 if (hit.collider != null)
                 {
                     ChangeImage targetCard = hit.collider.GetComponent<ChangeImage>();
+                    int cardIndex = hit.collider.GetComponent<ObjectInformation>().GetIndex();
 
                     // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
                     if (targetCard != null)
                     {
-                        targetCard.ImageChange(targetCard.mySpriteIndex);
-                        if ((clickedCount==1||clickedCount==2||clickedCount==3)&&targetCard.mySpriteIndex == correctOrder[currentStep])
+                        targetCard.ImageChange(cardIndex);
+                        if ((clickedCount==1||clickedCount==2||clickedCount==3)&&cardIndex == correctOrder[currentStep])
                         {
                             currentStep +=1;
                             if (currentStep >= correctOrder.Length)
@@ -56,18 +57,18 @@ public class Score102 : MonoBehaviour
                             }
                         }
 
-                        if (lastClickedIndex==-1&&targetCard.mySpriteIndex<2)
+                        if (lastClickedIndex==-1&&cardIndex<2)
                         {
-                            lastClickedIndex = targetCard.mySpriteIndex;
+                            lastClickedIndex = cardIndex;
                             expectBiggerNext = true;
 
                         }
-                        else if (lastClickedIndex == -1 && targetCard.mySpriteIndex > 2)
+                        else if (lastClickedIndex == -1 && cardIndex > 2)
                         {
-                            lastClickedIndex = targetCard.mySpriteIndex;
+                            lastClickedIndex = cardIndex;
                             expectBiggerNext = false;
                         }
-                        else if(lastClickedIndex == -1 && targetCard.mySpriteIndex == 2)
+                        else if(lastClickedIndex == -1 && cardIndex == 2)
                         {
                             score[0]=95;
                             displayScript.DisplayCanvas(score[0].ToString());
@@ -75,14 +76,14 @@ public class Score102 : MonoBehaviour
                         }
                         else
                         {
-                            if(expectBiggerNext == true && targetCard.mySpriteIndex > lastClickedIndex)
+                            if(expectBiggerNext == true && cardIndex > lastClickedIndex)
                             {
-                                lastClickedIndex = targetCard.mySpriteIndex;
-                                if (targetCard.mySpriteIndex < 2)
+                                lastClickedIndex = cardIndex;
+                                if (cardIndex < 2)
                                 {
                                     expectBiggerNext = true;
                                 }
-                                else if (targetCard.mySpriteIndex == 2)
+                                else if (cardIndex == 2)
                                 {
                                     score[0]=90;
                                     displayScript.DisplayCanvas(score[0].ToString());
@@ -93,14 +94,14 @@ public class Score102 : MonoBehaviour
                                     expectBiggerNext = false;
                                 }
                             }
-                            else if(expectBiggerNext == false && targetCard.mySpriteIndex < lastClickedIndex)
+                            else if(expectBiggerNext == false && cardIndex < lastClickedIndex)
                             {
-                                lastClickedIndex = targetCard.mySpriteIndex;
-                                if (targetCard.mySpriteIndex < 2)
+                                lastClickedIndex = cardIndex;
+                                if (cardIndex < 2)
                                 {
                                     expectBiggerNext = true;
                                 }
-                                else if (targetCard.mySpriteIndex == 2)
+                                else if (cardIndex == 2)
                                 {
                                     score[0]=90;
                                     displayScript.DisplayCanvas(score[0].ToString());
@@ -115,7 +116,7 @@ public class Score102 : MonoBehaviour
                             {
                                 score[1]=80;
                             }
-                            if (targetCard.mySpriteIndex == 2)
+                            if (cardIndex == 2)
                             {
                                 FinalScore();
                                 displayScript.DisplayCanvas(scoreText);

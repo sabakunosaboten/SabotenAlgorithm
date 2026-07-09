@@ -118,7 +118,7 @@ public class Score200 : MonoBehaviour
         if (isClear)
         {
             SSfinish = true;
-            clearSortName = "選択ソート";
+            clearSortName = "せんたくソート";
             RDcs.DisplayCanvas(clearSortName);
             SaveManager.SaveScore(clearSortName,1,1);
             Debug.Log("SelectionSort");

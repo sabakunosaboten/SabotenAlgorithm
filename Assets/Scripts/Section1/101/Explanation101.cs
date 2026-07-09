@@ -9,7 +9,7 @@ public class Explanation101 : MonoBehaviour
     void Start()
     {
         int previousScore;
-        int.TryParse(SaveManager.GetAllSaveData().saveScore[0,1],out previousScore);
+        int.TryParse(SaveManager.GetAllSaveData().row[0].col[0],out previousScore);
         if(0 <= previousScore && previousScore < 100)
         {
             Debug.Log(SaveManager.filePath);

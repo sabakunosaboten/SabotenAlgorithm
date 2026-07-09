@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Transactions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,22 +34,23 @@ public class Score : MonoBehaviour
                 if (hit.collider != null)
                 {
                     ChangeImage targetCard = hit.collider.GetComponent<ChangeImage>();
+                    int cardIndex = hit.collider.GetComponent<ObjectInformation>().GetIndex();
 
                     // ★修正ポイント2：当たったものに「ChangeImage」が付いているかチェック！
                     if (targetCard != null)
                     {
-                        targetCard.ImageChange(targetCard.mySpriteIndex);
-                        if(expectedNumber != targetCard.mySpriteIndex)
+                        targetCard.ImageChange(cardIndex);
+                        if(expectedNumber != cardIndex)
                         {
                             score[0] = 90;
                         }
                         
-                        clickCount[targetCard.mySpriteIndex] += 1;
-                        if (clickCount[targetCard.mySpriteIndex] >= 2)
+                        clickCount[cardIndex] += 1;
+                        if (clickCount[cardIndex] >= 2)
                         {
                             score[1] = 80;
                         }
-                        if(targetCard.mySpriteIndex == 4)
+                        if(cardIndex == 4)
                         {
                             FinalScore();
                             displayScript.DisplayCanvas(scoreText);
@@ -69,6 +71,6 @@ public class Score : MonoBehaviour
         {
             finalScore = score[1];
         }
-        SaveManager.SaveScore(scoreText,0,1);
+        SaveManager.SaveScore(scoreText,0,0);
     }
 }
