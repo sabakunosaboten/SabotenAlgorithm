@@ -10,7 +10,7 @@ public class Row { public string[] col; }
 public class SaveData {
     public Row[] row = new Row[] {
         new Row { col = new string[] { "-1", "-1" } },
-        new Row { col = new string[] { "ellor", "ellor" } }
+        new Row { col = new string[] { "ellor", "ellor","ellor" } }
     };
 }
 

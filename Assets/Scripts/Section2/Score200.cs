@@ -18,11 +18,15 @@ public class Score200 : MonoBehaviour
     bool BSfinish = false;
     bool SSfinish = false;
     bool ISfinish = false;
+    bool CSfinifh = false;
+    bool HSfinish = false;
     int BSIndex = 0;
     List<int> examineListIS;
     [SerializeField] List<int> cardlist;
     List<int> examineListSS;
     List<int> examineListBS;
+    List<int> examineListCS;
+    List<int> examineListHS;
     [SerializeField] int[] rightlist;
     
     string clearSortName;
@@ -38,6 +42,8 @@ public class Score200 : MonoBehaviour
     {
         examineListBS = new List<int>(cardlist);
         examineListSS = new List<int>(cardlist);
+        examineListCS = new List<int>(cardlist);
+        examineListHS = new List<int>(cardlist);
         int i=0;
         while (true)
         {
@@ -65,6 +71,11 @@ public class Score200 : MonoBehaviour
             {
                 SelectionSort(i);
             }
+            if(BSfinish == false && SSfinish == false && CSfinifh == false)
+            {
+                Debug.Log(i);
+                Bogosort();
+            }
 
             i++;
             if (i == 7)
@@ -80,7 +91,7 @@ public class Score200 : MonoBehaviour
         {
             if (examineListBS[i] > examineListBS[i + 1])
             {
-                BSfinish = true;
+                //BSfinish = true;
             }
         }
         if (examineListBS[firstIndex] > examineListBS[secondIndex])
@@ -112,7 +123,7 @@ public class Score200 : MonoBehaviour
         }
         else
         {
-            SSfinish = true;
+            //SSfinish = true;
         }
         bool isClear = ClearCheck(examineListSS);
         if (isClear)
@@ -124,9 +135,23 @@ public class Score200 : MonoBehaviour
             Debug.Log("SelectionSort");
         }
     }
-    void InsertSelection(int i)
+    void HeapSort(int i)
     {
         
+    }
+
+    void Bogosort()
+    {
+        (examineListCS[firstIndex],examineListCS[secondIndex]) = (examineListCS[secondIndex],examineListCS[firstIndex]);
+        bool isClear = ClearCheck(examineListCS);
+        if (isClear)
+        {
+            CSfinifh = true;
+            clearSortName = "ボゴソート";
+            RDcs.DisplayCanvas(clearSortName);
+            SaveManager.SaveScore(clearSortName,1,2);
+            Debug.Log("BogoSort");
+        }
     }
     bool ClearCheck(List<int> list)
     {
