@@ -16,17 +16,23 @@ public class Score200 : MonoBehaviour
     int secondIndex = -1;
 
     bool BSfinish = false;
+    bool BSrefuse = false;
     bool SSfinish = false;
+    bool SSrefuse = false;
     bool ISfinish = false;
     bool CSfinifh = false;
+    
     bool HSfinish = false;
+    bool HSrefuse = false;
     int BSIndex = 0;
+    int HSIndex = 6;
     List<int> examineListIS;
     [SerializeField] List<int> cardlist;
     List<int> examineListSS;
     List<int> examineListBS;
     List<int> examineListCS;
     List<int> examineListHS;
+    List<int> heapList;
     [SerializeField] int[] rightlist;
     
     string clearSortName;
@@ -44,6 +50,7 @@ public class Score200 : MonoBehaviour
         examineListSS = new List<int>(cardlist);
         examineListCS = new List<int>(cardlist);
         examineListHS = new List<int>(cardlist);
+        heapList = new List<int>(cardlist);
         int i=0;
         while (true)
         {
@@ -63,15 +70,19 @@ public class Score200 : MonoBehaviour
             firstIndex = Math.Min(fIndex,sIndex);
             secondIndex = Math.Max(fIndex,sIndex);
 
-            if (BSfinish == false)
+            if (BSfinish == false && BSrefuse == false )
             {
                 BubbleSort();
             }
-            if(SSfinish == false)
+            if(SSfinish == false && SSrefuse == false)
             {
                 SelectionSort(i);
             }
-            if(BSfinish == false && SSfinish == false && CSfinifh == false)
+            if(HSfinish == false && HSrefuse == false)
+            {
+                HeapSort();
+            }
+            if(BSfinish == false && SSfinish == false && HSfinish == false && CSfinifh == false)
             {
                 Debug.Log(i);
                 Bogosort();
@@ -91,7 +102,7 @@ public class Score200 : MonoBehaviour
         {
             if (examineListBS[i] > examineListBS[i + 1])
             {
-                //BSfinish = true;
+                BSrefuse = true;
             }
         }
         if (examineListBS[firstIndex] > examineListBS[secondIndex])
@@ -123,7 +134,7 @@ public class Score200 : MonoBehaviour
         }
         else
         {
-            //SSfinish = true;
+            SSrefuse = true;
         }
         bool isClear = ClearCheck(examineListSS);
         if (isClear)
@@ -135,9 +146,78 @@ public class Score200 : MonoBehaviour
             Debug.Log("SelectionSort");
         }
     }
-    void HeapSort(int i)
+    void HeapSort()
     {
-        
+        if (HeapCheck(heapList) == true)
+        {
+            for(int i=0;i<heapList.Count;i++)
+            {
+                //Debug.Log(heapList[i]);
+            }
+            if(firstIndex != 0 && secondIndex != HSIndex)
+            {
+                HSrefuse = true;
+            }
+            else
+            {
+                (examineListHS[0],examineListHS[HSIndex]) = (examineListHS[HSIndex],examineListHS[0]);
+                (heapList[0],heapList[HSIndex]) = (heapList[HSIndex],heapList[0]);
+                heapList.RemoveAt(HSIndex);
+                HSIndex--;
+            }
+        }
+        else
+        {
+            Debug.Log("a");
+            if (examineListHS[firstIndex] > examineListHS[secondIndex])
+            {
+                HSrefuse = true;
+            }
+            else
+            {
+                (examineListHS[firstIndex],examineListHS[secondIndex]) = (examineListHS[secondIndex],examineListHS[firstIndex]);
+                (heapList[firstIndex],heapList[secondIndex]) = (heapList[secondIndex],heapList[firstIndex]);
+            }
+        }
+        bool isClear = ClearCheck(examineListHS);
+        if(isClear)
+        {
+            HSfinish = true;
+            clearSortName = "ヒープソート";
+            RDcs.DisplayCanvas(clearSortName);
+            SaveManager.SaveScore(clearSortName,1,2);
+            Debug.Log("HeapSort");
+        }
+         
+    }
+    
+    bool HeapCheck(List<int> list)
+    {
+        for(int i = 0; i < list.Count/2 ; i++)
+        {
+            int max = -1;
+            if(list.Count%2 != 0)
+            {
+                max = Math.Max(list[i], Math.Max(list[2*i + 1], list[2*i + 2]));  
+            }
+            else
+            {
+                if(i == list.Count/2 - 1 && list.Count%2 == 0)
+                {
+                    max = Math.Max(list[i], list[2*i + 1]);
+                }
+                else
+                {
+                    max = Math.Max(list[i], Math.Max(list[2*i + 1], list[2*i + 2]));
+                }
+            }
+
+            if (max != list[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     void Bogosort()
@@ -149,7 +229,7 @@ public class Score200 : MonoBehaviour
             CSfinifh = true;
             clearSortName = "ボゴソート";
             RDcs.DisplayCanvas(clearSortName);
-            SaveManager.SaveScore(clearSortName,1,2);
+            SaveManager.SaveScore(clearSortName,1,3);
             Debug.Log("BogoSort");
         }
     }
