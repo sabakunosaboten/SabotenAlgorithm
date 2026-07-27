@@ -56,6 +56,13 @@ public class Score102 : MonoBehaviour
                                 canClick = false;
                             }
                         }
+                        if(cardIndex == 2&&clickedCount == 2)
+                        {
+                                score[1]=120;
+                                FinalScore();
+                                displayScript.DisplayCanvas(scoreText);
+                                canClick = false;
+                        }
 
                         if (lastClickedIndex==-1&&cardIndex<2)
                         {
@@ -132,11 +139,11 @@ public class Score102 : MonoBehaviour
     public void FinalScore()
     {
         finalScore = score[0];
-        scoreText = finalScore.ToString();
         if (score[1] != 0)
         {
             finalScore = score[1];
         }
+        scoreText = finalScore.ToString();
         SaveManager.SaveScore(scoreText,0,1);
     }
 }

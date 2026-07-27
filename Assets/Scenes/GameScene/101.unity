@@ -1322,6 +1322,7 @@ MonoBehaviour:
   positionX: -7.5
   positionY: 0
   spriteNumbers: 7
+  mySpriteIndex: -1
 --- !u!4 &1757391469
 Transform:
   m_ObjectHideFlags: 0

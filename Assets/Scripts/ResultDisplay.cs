@@ -35,6 +35,11 @@ public class ResultDisplay : MonoBehaviour
         }
         resultCanvas.enabled = true;
     }
+
+    public void CanvasDisplay()
+    {
+        resultCanvas.enabled = true;
+    }
     
     void CanvasHide()
     {

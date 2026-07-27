@@ -168,7 +168,6 @@ public class Score200 : MonoBehaviour
         }
         else
         {
-            Debug.Log("a");
             if (examineListHS[firstIndex] > examineListHS[secondIndex])
             {
                 HSrefuse = true;
